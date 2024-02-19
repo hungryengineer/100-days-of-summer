@@ -31,14 +31,14 @@ def calculator():
   while y:
     for key in operations:
       if operator == "+":
-        print(add(num1,num2))
+        return(add(num1,num2))
       elif operator == "-":
-        print(subtract(num1,num2))
+        return(subtract(num1,num2))
       elif operator == "/":
-        print(divide(num1,num2))
+        return(divide(num1,num2))
       else:
         operator == "*"
-        print(multiply(num1,num2))
+        return(multiply(num1,num2))
     result = operations[operator](num1,num2)
     print(f"The first number is {num1}, the second number is {num2}, the operator is {operator} and the final result is {result}")
     if input("Type no to start a new calculation or hit yes to continue\n") == "yes":
