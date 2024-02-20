@@ -1,6 +1,6 @@
 import random #imported random functions for choosing random cards
-from blackjack_art import logo
-print(logo)
+from art import logo_blackjack
+print(logo_blackjack)
 list_cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10] #defined a cards list as well as their values
 player_blackjack = {} #dictionary to store player cards
 computer_blackjack = {} #dictionary to store computer cards
