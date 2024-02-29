@@ -8,7 +8,7 @@ timmy.color("black")
 timmy.speed('fast')
 timmy.screen.bgcolor("beige")
 colors =['red','pink','blue','green','brown','gold']
-
+myscreen = turtle.Screen()
 def spirograph():
     for i in range(15):
         timmy.color(random.choice(colors))
@@ -18,8 +18,7 @@ def spirograph():
         timmy.pendown()
         timmy.right(60)
         timmy.circle(30)
-print(timmy)
+    print(timmy)
 spirograph()
-myscreen = turtle.Screen()
-print(myscreen)
 myscreen.exitonclick()
+print(myscreen)
