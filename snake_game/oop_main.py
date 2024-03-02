@@ -40,10 +40,8 @@ while game_on:
         game_on = False
         score.game_over()
 
-    for obj in snake_obj.snakes_list:
-        if obj == snake_obj.head:
-            pass
-        elif snake_obj.head.distance(obj) < 10:
+    for obj in snake_obj.snakes_list[1:]:
+        if snake_obj.head.distance(obj) < 10:
             game_on = False
             score.game_over()
 
