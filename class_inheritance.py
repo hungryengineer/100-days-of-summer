@@ -51,12 +51,8 @@
 # van_gogh = Painting()
 # van_gogh.forms()
 
-
-
-
-
-
-
+# list = ['a','b','c','d','e','f'] #list slicing and reversal
+# print(list[::-1])
 
 
 
