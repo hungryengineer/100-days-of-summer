@@ -16,14 +16,16 @@ timmy.color("green")
 timmy.speed('fast')
 colors =['red','pink','blue','green','brown','gold']
 y_positions = [0, -5, -10, -15, -20]
+
 for i in range(0,5):
-    timmy = Turtle(shape='turtle')
+    timmy = Turtle(shape='turtle') # we are creating multiple objects from Turtle class
     timmy.penup()
     timmys.append(timmy)
     timmy.color(random.choice(colors))
     timmy.goto(x=-180, y=y_positions[i])
 print(timmy)
-while race_on:
+
+while race_on: #putting a condition of race finish
     for i in timmys:
         i.forward(rand_dist)
     if timmy.xcor() > 175:
