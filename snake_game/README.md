@@ -7,7 +7,7 @@ We will be creating a retro snake game. Below are the modules:
 5. keep the score:
 6. detect collision with the WALL and the TAIL:
 
-+ + + + + + + + + + + +
++ + + + + + + + 
 The list "snake_movements" contains snake objects and
 we iterate over it using a variable called "snakes",
 retrieving the x-coordinate of the segment that comes before the current segment(snakes). 
@@ -18,7 +18,7 @@ and ending at the first segment (0). So, snake_movements[snakes - 1]
 gets the segment that comes before the current segment being processed 
 in each iteration of the loop whose path will be traced by subsequent objects.
 
-+ + + + + + + + + + + + + + + + + 
++ + + + + + + + 
 
 How to handle collision detection with the tail?
 
