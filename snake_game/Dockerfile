@@ -2,7 +2,7 @@
 FROM python:3.9-slim 
 
 #add the project source code
-ADD . /app
+COPY . /app
 
 #set the working directory from where the cmd instruction will be executed
 WORKDIR /app
