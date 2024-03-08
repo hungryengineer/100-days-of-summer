@@ -26,6 +26,10 @@ class Snake:
             snake.shapesize(0.5, 0.5, 0.5)
             snake.goto(position)
             self.snakes_list.append(snake)
+    def reset(self):
+        self.snakes_list.clear()
+        self.snake_creation()
+        self.head = self.snakes_list[0]
 
     def extend(self):
         self.add_extra_snakes(self.snakes_list[-1].position())
