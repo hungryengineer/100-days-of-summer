@@ -36,11 +36,12 @@ while game_on:
     answer_state = screen.textinput(title="guess the state", prompt="what is the name of this state?")
     state_list = data.state.to_list()
     if answer_state == "Exit":
-        missing_states = []
-        if answer_state not in state_list:
-            missing_states.append(state_list)
-            print(missing_states)
-            break
+        missing_states = [answer_state for answer_state in state_list if answer_state not in state_list] #using list comprehension, otherwise below code is also valid
+        # missing_states = []
+        # if answer_state not in state_list:
+        #     missing_states.append(state_list)
+        #     print(missing_states)
+        #     break
     elif answer_state in state_list:
         pointer = Turtle()
         pointer.color("blue")
