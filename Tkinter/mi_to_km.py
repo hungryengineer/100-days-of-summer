@@ -16,7 +16,7 @@ def value():
 
 button = Button(width=8, text='calculate')
 button['command'] = value
-button.pack() #button.grid()
+button.pack() #button.grid
 
 km_label =Label()
 km_label.pack()
