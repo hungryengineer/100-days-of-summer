@@ -1,7 +1,7 @@
 import tkinter
 from tkinter import *
 from tkinter import messagebox
-
+import json
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 #Password Generator Project
 
@@ -37,13 +37,27 @@ def password_generator():
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def save():
-    with open("record.txt", "a") as data:
-        if len(website_entry.get()) == 0:
+    # with open("record.txt", "a") as data:
+    dict_for_json_entry = { #creating a dict to be loaded into the json file
+        website_entry.get(): {
+          "email": user_entry.get(),
+          "pwd": pwd_entry.get(),
+    }
+}
+    # with open("record.json", 'w') as data:
+    if len(website_entry.get()) == 0:
             messagebox.showinfo(title='notification', message='no data recorded!')
-        elif len(website_entry.get()) > 0:
-            data.write(f"{website_entry.get()} | {user_entry.get()} | {pwd_entry.get()}\n")
-            website_entry.delete(0, END) #to flush the current entry record
-            pwd_entry.delete(0, END)
+    elif len(website_entry.get()) > 0:
+            # data.write(f"{website_entry.get()} | {user_entry.get()} | {pwd_entry.get()}\n") #file style
+            # json.dump(dict_for_json_entry, data, indent=3) #json style
+            with open("record.json", 'r') as data: #i) open the json file
+                data = json.load(data) # ii) read present data from the json file and store it in a variable
+                data.update(dict_for_json_entry) # iii) update the new data or entered data to json file
+            with open("record.json", 'w') as data_file: # open the json file again in write mode but this time under a new variable name
+                json.dump(data, data_file, indent=3)  # write the new data to json file
+
+            # website_entry.delete(0, END) #to flush the current entry record
+            # pwd_entry.delete(0, END)
             messagebox.showinfo(title='notification', message='data saved successfully!')
 
 
