@@ -38,7 +38,7 @@ def password_generator():
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def save():
     # with open("record.txt", "a") as data:
-    dict_for_json_entry = { #creating a dict to be loaded into the json file
+    dict_for_json_entry = { #creating an entry in dictionary format to be loaded into the json file
         website_entry.get(): {
           "email": user_entry.get(),
           "pwd": pwd_entry.get(),
@@ -52,7 +52,7 @@ def save():
             # json.dump(dict_for_json_entry, data, indent=3) #json style
             with open("record.json", 'r') as data: #i) open the json file
                 data = json.load(data) # ii) read present data from the json file and store it in a variable
-                data.update(dict_for_json_entry) # iii) update the new data or entered data to json file
+                data.update(dict_for_json_entry) # iii) update the new data/entered data to json file
             with open("record.json", 'w') as data_file: # open the json file again in write mode but this time under a new variable name
                 json.dump(data, data_file, indent=3)  # write the new data to json file
 
