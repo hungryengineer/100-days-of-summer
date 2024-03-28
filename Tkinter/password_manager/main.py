@@ -50,15 +50,38 @@ def save():
     elif len(website_entry.get()) > 0:
             # data.write(f"{website_entry.get()} | {user_entry.get()} | {pwd_entry.get()}\n") #file style
             # json.dump(dict_for_json_entry, data, indent=3) #json style
-            with open("record.json", 'r') as data: #i) open the json file
-                data = json.load(data) # ii) read present data from the json file and store it in a variable
+            try:
+                with open("record1.json", 'r') as data: #i) open the json file
+                    data = json.load(data) # ii) read present data from the json file and store it in a variable
+            except FileNotFoundError:
+                print("the file doesn't exist. creating it!.")
+                with open("record1.json", 'w') as data:
+                  json.dump(dict_for_json_entry, data, indent=3)
+            else:
                 data.update(dict_for_json_entry) # iii) update the new data/entered data to json file
-            with open("record.json", 'w') as data_file: # open the json file again in write mode but this time under a new variable name
-                json.dump(data, data_file, indent=3)  # write the new data to json file
+
+                with open("record1.json", 'w') as data_file: # open the json file again in write mode but this time under a new variable name
+                    json.dump(data, data_file, indent=3)  # write the new data to json file
 
             # website_entry.delete(0, END) #to flush the current entry record
             # pwd_entry.delete(0, END)
             messagebox.showinfo(title='notification', message='data saved successfully!')
+
+#-------------------------------find password--------------------------#
+
+def find_password():
+    website = website_entry.get()
+    with open ("record1.json") as data_file:
+        data = json.load(data_file)
+        if website in data:
+          email = data[website]["email"]
+          pwd = data[website]["pwd"]
+          try:
+            messagebox.showinfo(title='notification', message=f'data already exists! \n email: {email} \n password: {pwd}')
+          except FileNotFoundError:
+              messagebox.showerror(title='error', message='uhoh!')
+        else:
+          messagebox.showerror(title='error', message='uhoh! data does not exist')
 
 
 # ---------------------------- UI SETUP ------------------------------- #
@@ -72,7 +95,7 @@ img = PhotoImage(file="logo.png")
 canvas.create_image(150,150, image=img)
 canvas.grid(row=25, column=25)
 
-#3 labels, 3 entries, 2 buttons
+#3 labels, 3 entries, 3 buttons
 
 website_label = Label(text="website", bg="blue", font="bold", width=8, height=1)
 website_label.grid(row=2, column=14, columnspan=2)
@@ -100,9 +123,10 @@ pwd_entry.grid(row=9, column=14, columnspan=4)
 gen_pwd_button = Button(text="Generate",font="bold", command=password_generator)
 gen_pwd_button.grid(row=9, column=16, columnspan=4)
 
-add_pwd_button = Button(text="Add",font="bold",command=save)
+add_pwd_button = Button(text="Add",font="bold", command=save)
 add_pwd_button.grid(row=10, column=14, columnspan=4)
 
-
+search_button = Button(text="search",font="bold", command=find_password)
+search_button.grid(row=2, column=20, columnspan=5)
 
 window.mainloop()
